@@ -1,0 +1,1046 @@
+<asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="MySQLRegression" runtimeVersion="10.3.0.0">
+  <implementation.generic type="ispackage" />
+  <buildInfo name="BuildVersion" value="10.3.0.0.1538560288888" />
+  <buildInfo name="BuildTimestamp" value="2018-10-03T15:21:29" />
+  <buildInfo name="MinimumTargetRuntimeVersion" value="10.3.0.0" />
+  <property name="activatePkgOnInstall" displayName="Activate Package On Install">
+    <value>true</value>
+  </property>
+  <property name="archivePkgOnInstall" displayName="Archive Package On Install">
+    <value>true</value>
+  </property>
+  <property name="compilePackage" displayName="Compile Package On Install">
+    <value>true</value>
+  </property>
+  <property name="fragPackage" displayName="Fragment Package On Install">
+    <value>true</value>
+  </property>
+  <property name="clearACLs" displayName="Delete ACLs for the assets from the target Integration Server">
+    <value>false</value>
+  </property>
+  <property name="disallowActivePackageInstall" displayName="disallowActivePackageInstall">
+    <value>false</value>
+  </property>
+  <property name="packageExecutionCheck" displayName="packageExecutionCheck">
+    <value>0</value>
+  </property>
+  <property name="suspendTriggersDuringDeploy" displayName="Suspend Triggers During Deployment">
+    <value>false</value>
+  </property>
+  <property name="syncDocTypesToBroker" displayName="Synchronize Document Types To Broker During Deployment">
+    <value>true</value>
+  </property>
+  <asset name="ISPackage.MySQLRegression" displayName="MySQLRegression">
+    <implementation.generic type="ispackage" />
+  </asset>
+  <asset name="services.insert.insert_alltypes_flow" displayName="services.insert:insert_alltypes_flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.insert.insert_alltypes</dependsOn>
+  </asset>
+  <asset name="services.insert.insert_jointable_flow" displayName="services.insert:insert_jointable_flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.insert.insert_jointable</dependsOn>
+  </asset>
+  <asset name="services.insert.DataProvider" displayName="services.insert:DataProvider">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.insert.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.insert.class</dependsOn>
+  </asset>
+  <asset name="services.insert.insert_spcharstable" displayName="services.insert:insert_spcharstable">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.insert.insert_alltypes" displayName="services.insert:insert_alltypes">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.insert.insert_jointable" displayName="services.insert:insert_jointable">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.stream.SP_BLOBOUTFLOW" displayName="services.stored_procedure.stream:SP_BLOBOUTFLOW">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.stored_procedure.stream.SP_BLOBOUT</dependsOn>
+    <dependsOn>IS:services.setup.getBLOBsize</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.stream.SP_BLOBOUT" displayName="services.stored_procedure.stream:SP_BLOBOUT">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.SP_ReturnMultipleFlow" displayName="services.stored_procedure:SP_ReturnMultipleFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.stored_procedure.SP_MultipleOut</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.SP_Insert_Flow" displayName="services.stored_procedure:SP_Insert_Flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.sp_sign.DataProvider</dependsOn>
+    <dependsOn>IS:services.stored_procedure.SP_Insert</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.SP_MultipleOut" displayName="services.stored_procedure:SP_MultipleOut">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.SP_ReturnSingle" displayName="services.stored_procedure:SP_ReturnSingle">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.stored_procedure.SP_Insert" displayName="services.stored_procedure:SP_Insert">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectWAnd_Flow" displayName="services.selectservice:SelectWAnd_Flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.selectservice.DataProvider</dependsOn>
+    <dependsOn>IS:services.selectservice.SelectWAnd</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectJoinflow" displayName="services.selectservice:SelectJoinflow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.selectservice.SelectJoin</dependsOn>
+  </asset>
+  <asset name="services.selectservice.Selectflow" displayName="services.selectservice:Selectflow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.selectservice.Select</dependsOn>
+  </asset>
+  <asset name="services.selectservice.DataProvider" displayName="services.selectservice:DataProvider">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.selectservice.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.selectservice.class</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectWInt" displayName="services.selectservice:SelectWInt">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectWAnd" displayName="services.selectservice:SelectWAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectJoin" displayName="services.selectservice:SelectJoin">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectQueryTimeout_0" displayName="services.selectservice:SelectQueryTimeout_0">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.Select" displayName="services.selectservice:Select">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectJoinTable" displayName="services.selectservice:SelectJoinTable">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.selectservice.SelectMax5Rows" displayName="services.selectservice:SelectMax5Rows">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.stream.SelectFlow" displayName="services.custom.stream:SelectFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.custom.stream.Select</dependsOn>
+    <dependsOn>IS:services.setup.getBLOBsize</dependsOn>
+  </asset>
+  <asset name="services.custom.stream.Select" displayName="services.custom.stream:Select">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomDeleteflow" displayName="services.custom:CustomDeleteflow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.custom.CustomDelete</dependsOn>
+    <dependsOn>IS:services.selectservice.Selectflow</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomUpdateFlow" displayName="services.custom:CustomUpdateFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.custom.CustomUpdate</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomUpdateAndFlow" displayName="services.custom:CustomUpdateAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.custom.CustomUpdateAnd</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSelectAndFlow" displayName="services.custom:CustomSelectAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.custom.CustomSelectAnd</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSelectMax15Flow" displayName="services.custom:CustomSelectMax15Flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.custom.CustomSelectMaxRow15</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomDeleteAndFlow" displayName="services.custom:CustomDeleteAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.custom.CustomDeleteAnd</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomInsertFlow" displayName="services.custom:CustomInsertFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.custom.CustomInsert</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSelectflow" displayName="services.custom:CustomSelectflow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.custom.CustomSelect</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomUpdate" displayName="services.custom:CustomUpdate">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSelectMaxRow15" displayName="services.custom:CustomSelectMaxRow15">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSQL" displayName="services.custom:CustomSQL">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomDelete" displayName="services.custom:CustomDelete">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSelectAnd" displayName="services.custom:CustomSelectAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomDeleteAnd" displayName="services.custom:CustomDeleteAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomUpdateAnd" displayName="services.custom:CustomUpdateAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomSelect" displayName="services.custom:CustomSelect">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.custom.CustomInsert" displayName="services.custom:CustomInsert">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.batchinsert.BatchInsertFlow" displayName="services.batchinsert:BatchInsertFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.batchinsert.populateInput_1</dependsOn>
+    <dependsOn>IS:services.batchinsert.BatchInsert</dependsOn>
+  </asset>
+  <asset name="services.batchinsert.populateInput_1" displayName="services.batchinsert:populateInput_1">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.batchinsert.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.batchinsert.class</dependsOn>
+  </asset>
+  <asset name="services.batchinsert.BatchInsert" displayName="services.batchinsert:BatchInsert">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="services.update.update_flow" displayName="services.update:update_flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.update.DataProvider</dependsOn>
+    <dependsOn>IS:services.update.update</dependsOn>
+    <dependsOn>IS:services.selectservice.Select</dependsOn>
+  </asset>
+  <asset name="services.update.DataProvider" displayName="services.update:DataProvider">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.update.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.update.class</dependsOn>
+  </asset>
+  <asset name="services.update.update_flow_or" displayName="services.update:update_flow_or">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.update.DataProvider</dependsOn>
+    <dependsOn>IS:services.update.update_or</dependsOn>
+    <dependsOn>IS:services.selectservice.Select</dependsOn>
+  </asset>
+  <asset name="services.update.update" displayName="services.update:update">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.update.update_or" displayName="services.update:update_or">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.update.update_and" displayName="services.update:update_and">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.stream.SelectFlow" displayName="services.dynamic.stream:SelectFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.dynamic.stream.Select</dependsOn>
+    <dependsOn>IS:services.setup.getBLOBsize</dependsOn>
+  </asset>
+  <asset name="services.dynamic.stream.Select" displayName="services.dynamic.stream:Select">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicInsertFlow" displayName="services.dynamic:DynamicInsertFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.dynamic.DynamicInsert</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicDeleteAndFlow" displayName="services.dynamic:DynamicDeleteAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.dynamic.DynamicDeleteAnd</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicSelectWhereAndFlow" displayName="services.dynamic:DynamicSelectWhereAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.dynamic.DynamicSelectWhereAnd</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicUpdateAndFlow" displayName="services.dynamic:DynamicUpdateAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.DataProvider</dependsOn>
+    <dependsOn>IS:services.dynamic.DynamicUpdateAnd</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicCount" displayName="services.dynamic:DynamicCount">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.Dynamic" displayName="services.dynamic:Dynamic">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicSelectWhereAnd" displayName="services.dynamic:DynamicSelectWhereAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicDelete" displayName="services.dynamic:DynamicDelete">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicDeleteAnd" displayName="services.dynamic:DynamicDeleteAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicUpdateAnd" displayName="services.dynamic:DynamicUpdateAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.dynamic.DynamicInsert" displayName="services.dynamic:DynamicInsert">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.RollbackTransactionFlow" displayName="services.execservice.mysql:RollbackTransactionFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.execservice.mysql.ESInsert</dependsOn>
+    <dependsOn>IS:services.dynamic.Dynamic</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.testConnectionFlow" displayName="services.execservice.mysql:testConnectionFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.execservice.mysql.testConnection</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.PassInputToESFlow" displayName="services.execservice.mysql:PassInputToESFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.execservice.common.generateInput</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.ExecServiceIO</dependsOn>
+    <dependsOn>IS:services.execservice.common.processOutput</dependsOn>
+    <dependsOn>IS:services.dynamic.Dynamic</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.useConnection" displayName="services.execservice.mysql:useConnection">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.mysql.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.mysql.class</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.updateRecord</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.insertRecord</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.testConnection</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.InvalidServiceFlow" displayName="services.execservice.mysql:InvalidServiceFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.execservice.mysql.ESInvalid</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.NonAllowedService" displayName="services.execservice.mysql:NonAllowedService">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.execservice.mysql.ESNotAllowedService</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.updateRecord" displayName="services.execservice.mysql:updateRecord">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.mysql.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.mysql.class</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.useConnection</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.insertRecord</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.testConnection</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.insertRecord" displayName="services.execservice.mysql:insertRecord">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.mysql.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.mysql.class</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.useConnection</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.updateRecord</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.testConnection</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.testConnection" displayName="services.execservice.mysql:testConnection">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.mysql.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.mysql.class</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.useConnection</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.updateRecord</dependsOn>
+    <dependsOn>IS:services.execservice.mysql.insertRecord</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESCommit" displayName="services.execservice.mysql:ESCommit">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.EStest" displayName="services.execservice.mysql:EStest">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESInvalid" displayName="services.execservice.mysql:ESInvalid">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ExecServiceIO" displayName="services.execservice.mysql:ExecServiceIO">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESInsert" displayName="services.execservice.mysql:ESInsert">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESClose" displayName="services.execservice.mysql:ESClose">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESUpdate" displayName="services.execservice.mysql:ESUpdate">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESNotAllowedService" displayName="services.execservice.mysql:ESNotAllowedService">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.mysql.ESSetAutoCommit" displayName="services.execservice.mysql:ESSetAutoCommit">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.execservice.common.generateInput" displayName="services.execservice.common:generateInput">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.common.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.common.class</dependsOn>
+    <dependsOn>IS:services.execservice.common.setAutoCommitService</dependsOn>
+    <dependsOn>IS:services.execservice.common.closeConnection</dependsOn>
+    <dependsOn>IS:services.execservice.common.processOutput</dependsOn>
+    <dependsOn>IS:services.execservice.common.commitService</dependsOn>
+  </asset>
+  <asset name="services.execservice.common.setAutoCommitService" displayName="services.execservice.common:setAutoCommitService">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.common.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.common.class</dependsOn>
+    <dependsOn>IS:services.execservice.common.generateInput</dependsOn>
+    <dependsOn>IS:services.execservice.common.closeConnection</dependsOn>
+    <dependsOn>IS:services.execservice.common.processOutput</dependsOn>
+    <dependsOn>IS:services.execservice.common.commitService</dependsOn>
+  </asset>
+  <asset name="services.execservice.common.closeConnection" displayName="services.execservice.common:closeConnection">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.common.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.common.class</dependsOn>
+    <dependsOn>IS:services.execservice.common.generateInput</dependsOn>
+    <dependsOn>IS:services.execservice.common.setAutoCommitService</dependsOn>
+    <dependsOn>IS:services.execservice.common.processOutput</dependsOn>
+    <dependsOn>IS:services.execservice.common.commitService</dependsOn>
+  </asset>
+  <asset name="services.execservice.common.processOutput" displayName="services.execservice.common:processOutput">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.common.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.common.class</dependsOn>
+    <dependsOn>IS:services.execservice.common.generateInput</dependsOn>
+    <dependsOn>IS:services.execservice.common.setAutoCommitService</dependsOn>
+    <dependsOn>IS:services.execservice.common.closeConnection</dependsOn>
+    <dependsOn>IS:services.execservice.common.commitService</dependsOn>
+  </asset>
+  <asset name="services.execservice.common.commitService" displayName="services.execservice.common:commitService">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.execservice.common.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.execservice.common.class</dependsOn>
+    <dependsOn>IS:services.execservice.common.generateInput</dependsOn>
+    <dependsOn>IS:services.execservice.common.setAutoCommitService</dependsOn>
+    <dependsOn>IS:services.execservice.common.closeConnection</dependsOn>
+    <dependsOn>IS:services.execservice.common.processOutput</dependsOn>
+  </asset>
+  <asset name="services.batchupdate.BatchUpdateFlow" displayName="services.batchupdate:BatchUpdateFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.batchupdate.populateInput</dependsOn>
+    <dependsOn>IS:services.batchupdate.BatchUpdate</dependsOn>
+  </asset>
+  <asset name="services.batchupdate.populateInput" displayName="services.batchupdate:populateInput">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.batchupdate.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.batchupdate.class</dependsOn>
+  </asset>
+  <asset name="services.batchupdate.BatchUpdate" displayName="services.batchupdate:BatchUpdate">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.stream.SP_BLOBOUTFLOW" displayName="services.sp_sign.stream:SP_BLOBOUTFLOW">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.sp_sign.stream.SP_BLOBOUT</dependsOn>
+    <dependsOn>IS:services.setup.getBLOBsize</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.stream.SP_BLOBOUT" displayName="services.sp_sign.stream:SP_BLOBOUT">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.DataProvider" displayName="services.sp_sign:DataProvider">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.sp_sign.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.sp_sign.class</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.SP_Insert_Flow" displayName="services.sp_sign:SP_Insert_Flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.sp_sign.DataProvider</dependsOn>
+    <dependsOn>IS:services.sp_sign.SP_Insert</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.SP_Delete_Flow" displayName="services.sp_sign:SP_Delete_Flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.sp_sign.DataProvider</dependsOn>
+    <dependsOn>IS:services.sp_sign.SP_Delete</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.SP_Delete" displayName="services.sp_sign:SP_Delete">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.SP_ReturnSingle" displayName="services.sp_sign:SP_ReturnSingle">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.sp_sign.SP_Insert" displayName="services.sp_sign:SP_Insert">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.deleteservice.DataProvider" displayName="services.deleteservice:DataProvider">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.deleteservice.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.deleteservice.class</dependsOn>
+  </asset>
+  <asset name="services.deleteservice.DeleteWhereAndFlow" displayName="services.deleteservice:DeleteWhereAndFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.deleteservice.DataProvider</dependsOn>
+    <dependsOn>IS:services.deleteservice.DeleteWhereAnd</dependsOn>
+    <dependsOn>IS:services.selectservice.Selectflow</dependsOn>
+  </asset>
+  <asset name="services.deleteservice.DeleteFlow" displayName="services.deleteservice:DeleteFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.deleteservice.Delete</dependsOn>
+    <dependsOn>IS:services.selectservice.Select</dependsOn>
+  </asset>
+  <asset name="services.deleteservice.DeleteWhereAnd" displayName="services.deleteservice:DeleteWhereAnd">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.deleteservice.Delete" displayName="services.deleteservice:Delete">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.getBLOBsize" displayName="services.setup:getBLOBsize">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:MySQLRegression.code.source.services.setup.java</dependsOn>
+    <dependsOn>IS:MySQLRegression.code.classes.services.setup.class</dependsOn>
+  </asset>
+  <asset name="services.setup.create_jointable" displayName="services.setup:create_jointable">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.CreateSPDelete" displayName="services.setup:CreateSPDelete">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.CreateSP" displayName="services.setup:CreateSP">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.CreateSPReturn" displayName="services.setup:CreateSPReturn">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.CreateSPMultipleReturn" displayName="services.setup:CreateSPMultipleReturn">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.create_alltypes" displayName="services.setup:create_alltypes">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="services.setup.create_spchars" displayName="services.setup:create_spchars">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connection.MYSQL_NT</dependsOn>
+  </asset>
+  <asset name="notifications.insert.afterInsertFlow" displayName="notifications.insert:afterInsertFlow">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="notifications.insert.InsertPublishDocument" displayName="notifications.insert:InsertPublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.insert.Insert" displayName="notifications.insert:Insert">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.insert.InsertPublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.insert.InsertTrigger" displayName="notifications.insert:InsertTrigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.insert.afterInsertFlow</dependsOn>
+    <dependsOn>IS:notifications.insert.InsertPublishDocument</dependsOn>
+  </asset>
+  <asset name="notifications.delete_noti.DeletePublishDocument" displayName="notifications.delete_noti:DeletePublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.delete_noti.afterDelete" displayName="notifications.delete_noti:afterDelete">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="notifications.delete_noti.Delete" displayName="notifications.delete_noti:Delete">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.delete_noti.DeletePublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.delete_noti.DeleteTrigger" displayName="notifications.delete_noti:DeleteTrigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.delete_noti.afterDelete</dependsOn>
+    <dependsOn>IS:notifications.delete_noti.DeletePublishDocument</dependsOn>
+  </asset>
+  <asset name="notifications.update.UpdatePublishDocument" displayName="notifications.update:UpdatePublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.update.afterUpdateFlow" displayName="notifications.update:afterUpdateFlow">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="notifications.update.Update" displayName="notifications.update:Update">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.update.UpdatePublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.update.UpdateTrigger" displayName="notifications.update:UpdateTrigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.update.afterUpdateFlow</dependsOn>
+    <dependsOn>IS:notifications.update.UpdatePublishDocument</dependsOn>
+  </asset>
+  <asset name="notifications.order.afterOrder" displayName="notifications.order:afterOrder">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="notifications.order.OrderPublishDocument" displayName="notifications.order:OrderPublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.order.OrderFlow" displayName="notifications.order:OrderFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:services.insert.insert_alltypes_flow</dependsOn>
+    <dependsOn>IS:services.update.update_flow</dependsOn>
+    <dependsOn>IS:services.deleteservice.DeleteFlow</dependsOn>
+  </asset>
+  <asset name="notifications.order.Order" displayName="notifications.order:Order">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.order.OrderPublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.order.OrderTrigger" displayName="notifications.order:OrderTrigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.order.afterOrder</dependsOn>
+    <dependsOn>IS:notifications.order.OrderPublishDocument</dependsOn>
+  </asset>
+  <asset name="notifications.basic.BasicPublishDocument" displayName="notifications.basic:BasicPublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.basic.afterbasic" displayName="notifications.basic:afterbasic">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="notifications.basic.Basic" displayName="notifications.basic:Basic">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.basic.BasicPublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.basic.BasicTrigger" displayName="notifications.basic:BasicTrigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.basic.afterbasic</dependsOn>
+    <dependsOn>IS:notifications.basic.BasicPublishDocument</dependsOn>
+  </asset>
+  <asset name="notifications.sp_with_sign.SP_SignPublishDocument" displayName="notifications.sp_with_sign:SP_SignPublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.sp_with_sign.afterSPFlow" displayName="notifications.sp_with_sign:afterSPFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:notifications.sp_with_sign.SP_SignPublishDocument</dependsOn>
+    <dependsOn>IS:services.insert.insert_alltypes</dependsOn>
+  </asset>
+  <asset name="notifications.sp_with_sign.SP_Sign" displayName="notifications.sp_with_sign:SP_Sign">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.sp_with_sign.SP_SignPublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.sp_with_sign.SP_Trigger" displayName="notifications.sp_with_sign:SP_Trigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.sp_with_sign.afterSPFlow</dependsOn>
+    <dependsOn>IS:notifications.sp_with_sign.SP_SignPublishDocument</dependsOn>
+  </asset>
+  <asset name="notifications.sp.afterSPFlow" displayName="notifications.sp:afterSPFlow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:notifications.sp.SPPublishDocument</dependsOn>
+    <dependsOn>IS:services.insert.insert_alltypes</dependsOn>
+  </asset>
+  <asset name="notifications.sp.SPPublishDocument" displayName="notifications.sp:SPPublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notifications.sp.SP" displayName="notifications.sp:SP">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notifications.sp.SPPublishDocument</dependsOn>
+    <dependsOn>IS:connection.MYSQL_LT</dependsOn>
+  </asset>
+  <asset name="notifications.sp.SP_Trigger" displayName="notifications.sp:SP_Trigger">
+    <implementation.generic type="istrigger" />
+    <dependsOn>IS:notifications.sp.afterSPFlow</dependsOn>
+    <dependsOn>IS:notifications.sp.SPPublishDocument</dependsOn>
+  </asset>
+  <asset name="connection.enableConnections" displayName="connection:enableConnections">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="connection.disableConnections" displayName="connection:disableConnections">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="connection.MYSQL_LT" displayName="connection:MYSQL_LT">
+    <implementation.generic type="artconnection" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="transactionType">
+      <value>LOCAL_TRANSACTION</value>
+    </property>
+    <property name="datasourceClass">
+      <value>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</value>
+    </property>
+    <property name="serverName">
+      <value>localhost</value>
+    </property>
+    <property name="user">
+      <value>root</value>
+    </property>
+    <property name="password" isSecure="true">
+      <value>{AES}er+I3U8nDVm8F4DBRST1+A==</value>
+    </property>
+    <property name="databaseName">
+      <value>isinternal</value>
+    </property>
+    <property name="portNumber">
+      <value>3306</value>
+    </property>
+    <property name="networkProtocol">
+      <value />
+    </property>
+    <property name="otherProperties">
+      <value />
+    </property>
+    <property name=".CMGRPROP.poolable" displayName="poolable">
+      <value>true</value>
+    </property>
+    <property name=".CMGRPROP.minimumPoolSize" displayName="minimumPoolSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.maximumPoolSize" displayName="maximumPoolSize">
+      <value>10</value>
+    </property>
+    <property name=".CMGRPROP.poolIncrementSize" displayName="poolIncrementSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.blockingTimeout" displayName="blockingTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.expireTimeout" displayName="expireTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.startupRetryCount" displayName="startupRetryCount">
+      <value>0</value>
+    </property>
+    <property name=".CMGRPROP.startupBackoffSecs" displayName="startupBackoffSecs">
+      <value>10</value>
+    </property>
+  </asset>
+  <asset name="connection.MYSQL_XT" displayName="connection:MYSQL_XT">
+    <implementation.generic type="artconnection" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="transactionType">
+      <value>XA_TRANSACTION</value>
+    </property>
+    <property name="datasourceClass">
+      <value>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</value>
+    </property>
+    <property name="serverName">
+      <value>localhost</value>
+    </property>
+    <property name="user">
+      <value>root</value>
+    </property>
+    <property name="password" isSecure="true">
+      <value>{AES}er+I3U8nDVm8F4DBRST1+A==</value>
+    </property>
+    <property name="databaseName">
+      <value>isinternal</value>
+    </property>
+    <property name="portNumber">
+      <value>3306</value>
+    </property>
+    <property name="networkProtocol">
+      <value />
+    </property>
+    <property name="otherProperties">
+      <value />
+    </property>
+    <property name=".CMGRPROP.poolable" displayName="poolable">
+      <value>true</value>
+    </property>
+    <property name=".CMGRPROP.minimumPoolSize" displayName="minimumPoolSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.maximumPoolSize" displayName="maximumPoolSize">
+      <value>10</value>
+    </property>
+    <property name=".CMGRPROP.poolIncrementSize" displayName="poolIncrementSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.blockingTimeout" displayName="blockingTimeout">
+      <value>5000</value>
+    </property>
+    <property name=".CMGRPROP.expireTimeout" displayName="expireTimeout">
+      <value>5000</value>
+    </property>
+    <property name=".CMGRPROP.startupRetryCount" displayName="startupRetryCount">
+      <value>0</value>
+    </property>
+    <property name=".CMGRPROP.startupBackoffSecs" displayName="startupBackoffSecs">
+      <value>10</value>
+    </property>
+  </asset>
+  <asset name="connection.MYSQL_NT" displayName="connection:MYSQL_NT">
+    <implementation.generic type="artconnection" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="transactionType">
+      <value>NO_TRANSACTION</value>
+    </property>
+    <property name="datasourceClass">
+      <value>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</value>
+    </property>
+    <property name="serverName">
+      <value>localhost</value>
+    </property>
+    <property name="user">
+      <value>root</value>
+    </property>
+    <property name="password" isSecure="true">
+      <value>{AES}er+I3U8nDVm8F4DBRST1+A==</value>
+    </property>
+    <property name="databaseName">
+      <value>isinternal</value>
+    </property>
+    <property name="portNumber">
+      <value>3306</value>
+    </property>
+    <property name="networkProtocol">
+      <value>tcp</value>
+    </property>
+    <property name="otherProperties">
+      <value />
+    </property>
+    <property name=".CMGRPROP.poolable" displayName="poolable">
+      <value>true</value>
+    </property>
+    <property name=".CMGRPROP.minimumPoolSize" displayName="minimumPoolSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.maximumPoolSize" displayName="maximumPoolSize">
+      <value>10</value>
+    </property>
+    <property name=".CMGRPROP.poolIncrementSize" displayName="poolIncrementSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.blockingTimeout" displayName="blockingTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.expireTimeout" displayName="expireTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.startupRetryCount" displayName="startupRetryCount">
+      <value>0</value>
+    </property>
+    <property name=".CMGRPROP.startupBackoffSecs" displayName="startupBackoffSecs">
+      <value>10</value>
+    </property>
+  </asset>
+  <asset name="MySQLRegression.code" displayName="code">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.code.classes" displayName="code/classes">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.batchinsert.class" displayName="code/classes/services/batchinsert.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.batchupdate.class" displayName="code/classes/services/batchupdate.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.deleteservice.class" displayName="code/classes/services/deleteservice.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.execservice.common.class" displayName="code/classes/services/execservice/common.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.execservice.mysql.class" displayName="code/classes/services/execservice/mysql.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.insert.class" displayName="code/classes/services/insert.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.selectservice.class" displayName="code/classes/services/selectservice.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.setup.class" displayName="code/classes/services/setup.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.sp_sign.class" displayName="code/classes/services/sp_sign.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.classes.services.update.class" displayName="code/classes/services/update.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.jars" displayName="code/jars">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.code.source" displayName="code/source">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.batchinsert.java" displayName="code/source/services/batchinsert.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.batchupdate.java" displayName="code/source/services/batchupdate.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.deleteservice.java" displayName="code/source/services/deleteservice.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.execservice.common.java" displayName="code/source/services/execservice/common.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.execservice.mysql.java" displayName="code/source/services/execservice/mysql.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.insert.java" displayName="code/source/services/insert.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.selectservice.java" displayName="code/source/services/selectservice.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.setup.java" displayName="code/source/services/setup.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.sp_sign.java" displayName="code/source/services/sp_sign.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.code.source.services.update.java" displayName="code/source/services/update.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.config" displayName="config">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.config.aclmap_pkg.cnf" displayName="config/aclmap_pkg.cnf">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="MySQLRegression.doc" displayName="doc">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.lib" displayName="lib">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.pub" displayName="pub">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.resources" displayName="resources">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.templates" displayName="templates">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="MySQLRegression.web" displayName="web">
+    <implementation.generic type="isfolder" />
+  </asset>
+</asset_composite>
+

@@ -1,0 +1,272 @@
+<asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="Testpackage" runtimeVersion="10.3.0.0">
+  <implementation.generic type="ispackage" />
+  <buildInfo name="BuildVersion" value="10.3.0.0.1538560288888" />
+  <buildInfo name="BuildTimestamp" value="2018-10-03T15:21:30" />
+  <buildInfo name="MinimumTargetRuntimeVersion" value="10.3.0.0" />
+  <property name="activatePkgOnInstall" displayName="Activate Package On Install">
+    <value>true</value>
+  </property>
+  <property name="archivePkgOnInstall" displayName="Archive Package On Install">
+    <value>true</value>
+  </property>
+  <property name="compilePackage" displayName="Compile Package On Install">
+    <value>true</value>
+  </property>
+  <property name="fragPackage" displayName="Fragment Package On Install">
+    <value>true</value>
+  </property>
+  <property name="clearACLs" displayName="Delete ACLs for the assets from the target Integration Server">
+    <value>false</value>
+  </property>
+  <property name="disallowActivePackageInstall" displayName="disallowActivePackageInstall">
+    <value>false</value>
+  </property>
+  <property name="packageExecutionCheck" displayName="packageExecutionCheck">
+    <value>0</value>
+  </property>
+  <property name="suspendTriggersDuringDeploy" displayName="Suspend Triggers During Deployment">
+    <value>false</value>
+  </property>
+  <property name="syncDocTypesToBroker" displayName="Synchronize Document Types To Broker During Deployment">
+    <value>true</value>
+  </property>
+  <asset name="ISPackage.Testpackage" displayName="Testpackage">
+    <implementation.generic type="ispackage" />
+  </asset>
+  <asset name="services.select" displayName="services:select">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connections.localmysql</dependsOn>
+  </asset>
+  <asset name="services.insertData" displayName="services:insertData">
+    <implementation.generic type="artservice" />
+    <dependsOn>IS:connections.sqlconnection</dependsOn>
+  </asset>
+  <asset name="notification.insertNotifPublishDocument" displayName="notification:insertNotifPublishDocument">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="notification.insertNotif" displayName="notification:insertNotif">
+    <implementation.generic type="artpollingnotification" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="notificationImmediate" displayName="Immediate:">
+      <value>false</value>
+    </property>
+    <property name="notificationInterval" displayName="Interval: (seconds)">
+      <value>10</value>
+    </property>
+    <property name="notificationOverlap" displayName="Overlap:">
+      <value>false</value>
+    </property>
+    <dependsOn>IS:notification.insertNotifPublishDocument</dependsOn>
+    <dependsOn>IS:connections.sqlconnection</dependsOn>
+  </asset>
+  <asset name="connections.sqlconnection" displayName="connections:sqlconnection">
+    <implementation.generic type="artconnection" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="transactionType">
+      <value>LOCAL_TRANSACTION</value>
+    </property>
+    <property name="datasourceClass">
+      <value>com.microsoft.sqlserver.jdbc.SQLServerDataSource</value>
+    </property>
+    <property name="serverName">
+      <value>mcinnda02.eur.ad.sag</value>
+    </property>
+    <property name="user">
+      <value>JDBCAdapter</value>
+    </property>
+    <property name="password" isSecure="true">
+      <value>{AES}rNc2gdTQ42ls4aTqpftpQQ==</value>
+    </property>
+    <property name="databaseName">
+      <value>TestDb</value>
+    </property>
+    <property name="portNumber">
+      <value>1433</value>
+    </property>
+    <property name="networkProtocol">
+      <value>tcp</value>
+    </property>
+    <property name="otherProperties">
+      <value>encrypt=true;trustStore=packages\CustomJarsPackage\config\sqlServerTrustStore;trustStorePassword=manage</value>
+    </property>
+    <property name=".CMGRPROP.poolable" displayName="poolable">
+      <value>true</value>
+    </property>
+    <property name=".CMGRPROP.minimumPoolSize" displayName="minimumPoolSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.maximumPoolSize" displayName="maximumPoolSize">
+      <value>10</value>
+    </property>
+    <property name=".CMGRPROP.poolIncrementSize" displayName="poolIncrementSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.blockingTimeout" displayName="blockingTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.expireTimeout" displayName="expireTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.startupRetryCount" displayName="startupRetryCount">
+      <value>0</value>
+    </property>
+    <property name=".CMGRPROP.startupBackoffSecs" displayName="startupBackoffSecs">
+      <value>10</value>
+    </property>
+  </asset>
+  <asset name="connections.localmysql" displayName="connections:localmysql">
+    <implementation.generic type="artconnection" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="transactionType">
+      <value>LOCAL_TRANSACTION</value>
+    </property>
+    <property name="datasourceClass">
+      <value>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</value>
+    </property>
+    <property name="serverName">
+      <value>localhost</value>
+    </property>
+    <property name="user">
+      <value>root</value>
+    </property>
+    <property name="password" isSecure="true">
+      <value>{AES}er+I3U8nDVm8F4DBRST1+A==</value>
+    </property>
+    <property name="databaseName">
+      <value>isinternal</value>
+    </property>
+    <property name="portNumber">
+      <value>3306</value>
+    </property>
+    <property name="networkProtocol">
+      <value>tcp</value>
+    </property>
+    <property name="otherProperties">
+      <value />
+    </property>
+    <property name=".CMGRPROP.poolable" displayName="poolable">
+      <value>true</value>
+    </property>
+    <property name=".CMGRPROP.minimumPoolSize" displayName="minimumPoolSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.maximumPoolSize" displayName="maximumPoolSize">
+      <value>10</value>
+    </property>
+    <property name=".CMGRPROP.poolIncrementSize" displayName="poolIncrementSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.blockingTimeout" displayName="blockingTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.expireTimeout" displayName="expireTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.startupRetryCount" displayName="startupRetryCount">
+      <value>0</value>
+    </property>
+    <property name=".CMGRPROP.startupBackoffSecs" displayName="startupBackoffSecs">
+      <value>10</value>
+    </property>
+  </asset>
+  <asset name="connections.mysqlconnection" displayName="connections:mysqlconnection">
+    <implementation.generic type="artconnection" />
+    <property name="art.deployment.state" displayName="State After Deployment">
+      <value>disable</value>
+    </property>
+    <property name="transactionType">
+      <value>LOCAL_TRANSACTION</value>
+    </property>
+    <property name="datasourceClass">
+      <value>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</value>
+    </property>
+    <property name="serverName">
+      <value>10.60.8.157</value>
+    </property>
+    <property name="user">
+      <value>root</value>
+    </property>
+    <property name="password" isSecure="true">
+      <value>{AES}er+I3U8nDVm8F4DBRST1+A==</value>
+    </property>
+    <property name="databaseName">
+      <value>adapter_service</value>
+    </property>
+    <property name="portNumber">
+      <value>3306</value>
+    </property>
+    <property name="networkProtocol">
+      <value>tcp</value>
+    </property>
+    <property name="otherProperties">
+      <value />
+    </property>
+    <property name=".CMGRPROP.poolable" displayName="poolable">
+      <value>true</value>
+    </property>
+    <property name=".CMGRPROP.minimumPoolSize" displayName="minimumPoolSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.maximumPoolSize" displayName="maximumPoolSize">
+      <value>10</value>
+    </property>
+    <property name=".CMGRPROP.poolIncrementSize" displayName="poolIncrementSize">
+      <value>1</value>
+    </property>
+    <property name=".CMGRPROP.blockingTimeout" displayName="blockingTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.expireTimeout" displayName="expireTimeout">
+      <value>1000</value>
+    </property>
+    <property name=".CMGRPROP.startupRetryCount" displayName="startupRetryCount">
+      <value>0</value>
+    </property>
+    <property name=".CMGRPROP.startupBackoffSecs" displayName="startupBackoffSecs">
+      <value>10</value>
+    </property>
+  </asset>
+  <asset name="Testpackage.code" displayName="code">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.code.classes" displayName="code/classes">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.code.jars" displayName="code/jars">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.code.source" displayName="code/source">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.config" displayName="config">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.config.aclmap_pkg.cnf" displayName="config/aclmap_pkg.cnf">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="Testpackage.doc" displayName="doc">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.lib" displayName="lib">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.pub" displayName="pub">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.resources" displayName="resources">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.templates" displayName="templates">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="Testpackage.web" displayName="web">
+    <implementation.generic type="isfolder" />
+  </asset>
+</asset_composite>
+
