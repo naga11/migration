@@ -39,7 +39,7 @@
   <asset name="connections.azuresqlConnection" displayName="connections:azuresqlConnection">
     <implementation.generic type="artconnection" />
     <property name="art.deployment.state" displayName="State After Deployment">
-      <value>disable</value>
+      <value>enable</value>
     </property>
     <property name="transactionType">
       <value>LOCAL_TRANSACTION</value>
