@@ -99,7 +99,7 @@
   <asset name="notifications.onBoardEmployeeNotification" displayName="notifications:onBoardEmployeeNotification">
     <implementation.generic type="artpollingnotification" />
     <property name="art.deployment.state" displayName="State After Deployment">
-      <value>enable</value>
+      <value>disable</value>
     </property>
     <property name="notificationImmediate" displayName="Immediate:">
       <value>false</value>
