@@ -1,7 +1,7 @@
 <asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="EmployeeOnBoarding" runtimeVersion="10.3.0.0">
   <implementation.generic type="ispackage" />
-  <buildInfo name="BuildVersion" value="10.3.0.0.1538632563636" />
-  <buildInfo name="BuildTimestamp" value="2018-10-04T12:26:03" />
+  <buildInfo name="BuildVersion" value="10.3.0.0.1538637769500" />
+  <buildInfo name="BuildTimestamp" value="2018-10-04T12:52:49" />
   <buildInfo name="MinimumTargetRuntimeVersion" value="10.3.0.0" />
   <property name="activatePkgOnInstall" displayName="Activate Package On Install">
     <value>true</value>
@@ -32,6 +32,7 @@
   </property>
   <asset name="ISPackage.EmployeeOnBoarding" displayName="EmployeeOnBoarding">
     <implementation.generic type="ispackage" />
+    <dependsOn>IS:ISPackage.CustomJarsPackage</dependsOn>
   </asset>
   <asset name="services.User" displayName="services:User">
     <implementation.generic type="isdocumenttype" />
@@ -99,7 +100,7 @@
   <asset name="notifications.onBoardEmployeeNotification" displayName="notifications:onBoardEmployeeNotification">
     <implementation.generic type="artpollingnotification" />
     <property name="art.deployment.state" displayName="State After Deployment">
-      <value>disable</value>
+      <value>enable</value>
     </property>
     <property name="notificationImmediate" displayName="Immediate:">
       <value>false</value>
@@ -140,6 +141,9 @@
   <asset name="flowServices.registerEmployee" displayName="flowServices:registerEmployee">
     <implementation.generic type="isflowservice" />
     <dependsOn>IS:adapterServices.insertEmployeeData</dependsOn>
+  </asset>
+  <asset name="flowServices.Testflow" displayName="flowServices:Testflow">
+    <implementation.generic type="isflowservice" />
   </asset>
   <asset name="EmployeeOnBoarding.code" displayName="code">
     <implementation.generic type="isfolder" />
