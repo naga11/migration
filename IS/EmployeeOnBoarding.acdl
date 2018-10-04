@@ -1,7 +1,7 @@
 <asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="EmployeeOnBoarding" runtimeVersion="10.3.0.0">
   <implementation.generic type="ispackage" />
-  <buildInfo name="BuildVersion" value="10.3.0.0.1538560288888" />
-  <buildInfo name="BuildTimestamp" value="2018-10-03T15:21:33" />
+  <buildInfo name="BuildVersion" value="10.3.0.0.1538632563636" />
+  <buildInfo name="BuildTimestamp" value="2018-10-04T11:26:03" />
   <buildInfo name="MinimumTargetRuntimeVersion" value="10.3.0.0" />
   <property name="activatePkgOnInstall" displayName="Activate Package On Install">
     <value>true</value>
@@ -39,7 +39,7 @@
   <asset name="connections.azuresqlConnection" displayName="connections:azuresqlConnection">
     <implementation.generic type="artconnection" />
     <property name="art.deployment.state" displayName="State After Deployment">
-      <value>enable</value>
+      <value>disable</value>
     </property>
     <property name="transactionType">
       <value>LOCAL_TRANSACTION</value>
