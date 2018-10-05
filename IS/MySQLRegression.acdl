@@ -1,7 +1,7 @@
 <asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="MySQLRegression" runtimeVersion="10.3.0.0">
   <implementation.generic type="ispackage" />
-  <buildInfo name="BuildVersion" value="10.3.0.0.1538560288888" />
-  <buildInfo name="BuildTimestamp" value="2018-10-03T15:21:29" />
+  <buildInfo name="BuildVersion" value="10.3.0.0.1538715958364" />
+  <buildInfo name="BuildTimestamp" value="2018-10-05T10:35:59" />
   <buildInfo name="MinimumTargetRuntimeVersion" value="10.3.0.0" />
   <property name="activatePkgOnInstall" displayName="Activate Package On Install">
     <value>true</value>
