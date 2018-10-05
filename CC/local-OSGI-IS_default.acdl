@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <asset_composite name="local-OSGI-IS_default" displayName="local-OSGI-IS_default" targetNamespace="http://namespaces.softwareag.com/webMethods/CC" xmlns="http://namespaces.softwareag.com/acdl/1.0" xmlns:EDA="http://namespaces.softwareag.com/webMethods/EDA" xmlns:MWS="http://namespaces.softwareag.com/webMethods/MWS" xmlns:IS="http://namespaces.softwareag.com/webMethods/IS" xmlns:APIPORTAL="http://namespaces.softwareag.com/webMethods/APIPORTAL" xmlns:AgileApps="http://namespaces.softwareag.com/webMethods/AgileApps" xmlns:BROKER="http://namespaces.softwareag.com/webMethods/BROKER" xmlns:implDetails="http://namespaces.softwareag.com/acdl/implDetails" xmlns:UniversalMessaging="http://namespaces.softwareag.com/webMethods/UniversalMessaging" xmlns:TN="http://namespaces.softwareag.com/webMethods/TN" xmlns:RULES="http://namespaces.softwareag.com/webMethods/RULES" xmlns:BPM="http://namespaces.softwareag.com/webMethods/BPM" xmlns:Optimize="http://namespaces.softwareag.com/webMethods/Optimize">
     <buildInfo name="BuildVersion" value="1"/>
-    <buildInfo name="build.timestamp" value="2018-10-05T10:36:11"/>
+    <buildInfo name="build.timestamp" value="2018-10-05T14:08:36"/>
     <buildInfo name="productId" value="integrationServer"/>
+    <property name="integrationserver-default.common-wmmessaging-is_um_connection.messaging.provider.url" many="false" isSecure="false" displayName="integrationserver-default.common-wmmessaging-is_um_connection.messaging.provider.url">
+        <value>nsp://localhost:9000</value>
+    </property>
     <property name="integrationserver-default.common-truststores_jdbctruststore.truststore.password" many="false" isSecure="true" displayName="integrationserver-default.common-truststores_jdbctruststore.truststore.password">
-        <value>'{AES/CBC/PKCS5Padding}{p42jSZlLNpB8IuHJG0ilFQ/MWn5kMrqe0zHKqzmYsC0=}{AJoDrs1qoPywP+5iFhSeQg==}3ejiwCysHt0WHmdE+5VeAg=='</value>
+        <value>'{AES/CBC/PKCS5Padding}{frmTLGjtkitYxYOn8+PIWkFbVjy4QL6ljv3g0yXIRqQ=}{bm5KbufcV6lZOHgGoJF/bQ==}y9+KEvC2r3QsqBp88rkfRA=='</value>
     </property>
     <property name="integrationserver-default.common-truststores_jdbctruststore.truststore.location" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_jdbctruststore.truststore.location">
         <value>packages\CustomJarsPackage\config\platform_truststore.jks</value>
