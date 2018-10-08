@@ -7,7 +7,7 @@
         <value>'{AES/CBC/PKCS5Padding}{MSGl9Lne3CqdRJZS94Hh8wzmXtK0glzSQIs1nJHiLG4=}{LDUenRLALV/tH/wsh88fCA==}W5qx93RPXIm8yhkq0Qx4DA=='</value>
     </property>
     <property name="integrationserver-default.common-truststores_jdbctruststore.truststore.location" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_jdbctruststore.truststore.location">
-        <value>packages\CustomJarsPackage\config\oracleTrustStore</value>
+        <value>packages/CustomJarsPackage/config/oracleTrustStore</value>
     </property>
     <property name="integrationserver-default.common-truststores_jdbctruststore.truststore.type" many="false" isSecure="false" displayName="integrationserver-default.common-truststores_jdbctruststore.truststore.type">
         <value>JKS</value>
